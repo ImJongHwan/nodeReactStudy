@@ -1,0 +1,16 @@
+{
+  "name": "study_react",
+  "version": "1.0.0",
+  "description": "The first project for React + Node.js study with GangDongOk.",
+  "main": "index.js",
+  "dependencies": {
+    "colors": "^1.3.0",
+    "request": "^2.87.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no teset specified\" && exit 1"
+  },
+  "author": "Im Jonghwan",
+  "license": "ISC"
+}
