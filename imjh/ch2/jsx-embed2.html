@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id='root'></div>
+    <script type="text/babel">
+      const title = "서예"
+      const imgUrl = "http://uta.pw/shodou/img/28/214.png"
+      const msg =
+        <div>
+          <h1>{title}</h1>
+          <p><img src={imgUrl} /></p>
+        </div>
+      const elm = document.getElementById("root")
+      ReactDOM.render(msg, elm)
+    </script>
+  </body>
+</html>

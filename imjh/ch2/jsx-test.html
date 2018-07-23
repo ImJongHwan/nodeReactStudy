@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id='root'></div>
+    <script type="text/babel">
+      ReactDOM.render(
+        getDOM(),
+        document.getElementById('root')
+      )
+
+      function getDOM() {
+        return (
+          <div>
+            <p>죄는 미워하되 사람은 미워하지 말라</p>
+            <p>이것 또한 지나가리라</p>
+          </div>
+        )
+      }
+    </script>
+  </body>
+</html>
