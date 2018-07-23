@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel bmi.js -o bmi.out.js",
+    "start": "node bmi.out.js"
   },
   "keywords": [],
   "author": "",
