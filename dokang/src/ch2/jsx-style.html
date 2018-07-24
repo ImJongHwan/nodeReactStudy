@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    ReactDOM.render(
+      getDOM(),
+      document.getElementById('root')
+    )
+
+    function getDOM() {
+      const css1 = {
+        'color': 'red',
+        'background-color': '#f0f0ff',
+        'font-size': '2em'
+      }
+      const css2 = {
+        'color': 'blue',
+        'backgroundColor': '#fff0f0',
+        'fontSize': '2em'
+      }
+      return (
+        <div>
+          <p style={css1}>죄는 미워하되 사람은 미워하지 말자</p>
+          <p style={css2}>이것 또한 지나가리라</p>
+        </div>
+      )
+    }
+  </script>
+</body>
+</html>
