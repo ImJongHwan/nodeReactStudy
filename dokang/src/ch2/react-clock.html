@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    setInterval(showClock, 1000)
+    function showClock() {
+      const d = new Date()
+      const h = d.getHours()
+      const m = d.getMinutes()
+      const s = d.getSeconds()
+      const elem = (
+        <div>{h}:{m}:{s}</div>
+      )
+      ReactDOM.render(elem, document.getElementById('root'))
+    }
+  </script>
+</body>
+</html>
