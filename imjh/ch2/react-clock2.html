@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id='root'></div>
+    <script type="text/babel">
+      setInterval(showClock, 1000)
+      function showClock () {
+        const d = new Date()
+        const [hour, min, sec] = [
+          d.getHours(),
+          d.getMinutes(),
+          d.getSeconds()
+        ]
+        const z2 = (v) => {
+          const s = "00" + v
+          return s.substr(s.length - 2, 2)
+        }
+        const elem = <div>{z2(hour)}:{z2(min)}:{z2(sec)}</div>
+        const root = document.getElementById("root")
+        ReactDOM.render(elem, root)
+      }
+    </script>
+  </body>
+</html>

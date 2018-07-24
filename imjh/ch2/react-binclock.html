@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+  </head>
+  <body>
+    <div><div id='root'></div></div>
+    <script type="text/babel">
+      setInterval(update, 1000)
+      function update () {
+        const d = new Date()
+        const [hour, min, sec] = [
+          z2(d.getHours()),
+          z2(d.getMinutes()),
+          z2(d.getSeconds())
+        ]
+        const binStr = hour + min + sec
+        const style0 = { color: 'grey' }
+        const style1 = { color: 'red' }
+        const lines = []
+        for (let i = 0; i < binStr.length; i++) {
+          const v = parseInt(binStr.substr(i, 1))
+          const bin = "0000" + v.toString(2)
+          const bin8 = bin.substr(bin.length - 4, 4)
+
+          for (let j = 0; j < bin8.length; j++) {
+            console.log(bin8.substr(j, 1))
+            if (bin8.substr(j, 1) === '0') {
+              lines.push(<span style={style0}><i class="fas fa-bullseye"></i></span>)
+            } else {
+              lines.push(<span style={style1}><i class="fas fa-bullseye"></i></span>)
+            }
+          }
+          lines.push(<br />)
+        }
+        const root = document.getElementById("root")
+        ReactDOM.render(<div>{lines}</div>, root)
+      }
+      const z2 = (v) => {
+        const s = "00" + v
+        return s.substr(s.length - 2, 2)
+      }
+    </script>
+  </body>
+</html>
