@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+  <style> body {
+    font-size: 32px;
+    text-align: center; } </style>
+</head>
+<body>
+  <div><div id="disp"></div></div>
+  <script type="text/babel">
+    setInterval(showBinClock, 1000)
+
+    const z2 = i => {
+      const zzi = "00" + i
+      return zzi.substr(zzi.length - 2, 2)
+    }
+
+    const z4 = i => {
+      const zzi = "000000" + i
+      return zzi.substr(zzi.length - 4, 4)
+    }
+
+    function showBinClock(){
+      const now = new Date()
+      const [ h, m, s ] = [z2(now.getHours()), z2(now.getMinutes()), z2(now.getSeconds())]
+      const decDigit6 = h + m + s
+      const style0 = { color: 'brown' }
+      const style1 = { color: 'red' }
+      const lines = []
+      Array.from(decDigit6).forEach((decDigit) => {
+        Array.from(z4(parseInt(decDigit).toString(2))).forEach((binDigit) =>{
+          if (binDigit === '0') lines.push(<span style={style0}>○</span>)
+          else lines.push(<span style={style1}>●</span>)
+        })
+        lines.push(<br />)
+      })
+      const disp = document.getElementById('disp')
+      ReactDOM.render(<div>{lines}</div>, disp)
+    }
+  </script>
+</body>
+</html>
