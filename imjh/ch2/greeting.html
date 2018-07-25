@@ -1,0 +1,23 @@
+<!DOCTYPE html><html><head>
+  <meta charset='utf-8'>
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id='disp'></div>
+    <script type="text/babel">
+      const root = document.querySelector('#disp')
+      const msg = getGreeting()
+      ReactDOM.render(msg, root)
+      function getGreeting () {
+        const r = Math.floor(Math.random() * 3)
+        if (r == 0) return <p>오늘도 즐거운 하루 되세요.</p>
+        if (r == 1) return <p>안녕하세요.</p>
+        if (r == 2) return <p>날씨가 좋네요.</p>
+      }
+    </script>
+  </body>
+</html>
