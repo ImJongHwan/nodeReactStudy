@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+
+    class Clock extends React.Component {
+      constructor(props) {
+        super(props)
+        this.state = { now: new Date() }
+        setInterval( e => this.setState({now: new Date()}), 1000)
+      }
+      render() {
+        const state = this.state
+        const now = state.now
+        const nowHMS = [now.getHours(), now.getMinutes(), now.getSeconds()]
+        function fmt(i) {
+          const zereAdded = "0" + i
+          return zereAdded.substr(zereAdded.length - 2, 2)
+        }
+        const [hh, mm, ss] = nowHMS.map(fmt)
+        return (<div>{hh}:{mm}:{ss}</div>)
+      }
+    }
+    const dom = (
+      <div><Clock /></div>
+    )
+    ReactDOM.render(dom, document.getElementById('root'))
+  </script>
+</body>
+</html>
