@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    class RList extends React.Component {
+      render () {
+        const props = this.props
+        const title = props.title ? props.title : "List"
+        const itemList = props.items.split(",")
+        const itemListCP = itemList.map(item => <li>{item}</li>)
+        return <div>
+          <h3>{title}</h3>
+          <ul>{itemListCP}</ul>
+        </div>
+      }
+    }
+
+    const dom = (
+      <div>
+        <RList title="Colors" items="Yellow,Red,Green,Blue" />
+        <RList title="" items="Yellow,Red,Green,Blue" />
+      </div>
+    )
+
+    ReactDOM.render(dom, document.getElementById('root'))
+  </script>
+</body>
+</html>
