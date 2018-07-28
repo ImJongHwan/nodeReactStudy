@@ -12,14 +12,13 @@
     class Hello extends React.Component {
       constructor(props) {
         super(props)
-        this.helloClickHandler = this.clickHandler.bind(this)
       }
 
-      clickHandler(e) {
-        alert(`${this.props.name}님 안녕하세요`)
-      }
       render() {
-        return <div onClick={this.helloClickHandler}>Click Me</div>
+        const clickHandler = e => {
+          alert(`${this.props.name}님 안녕하세요`)
+        }
+        return <div onClick={clickHandler}>Click Me</div>
       }
     }
 
