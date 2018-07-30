@@ -1,4 +1,19 @@
 .idea
+project/boot
+project/plugins/project
+target
+lib_managed
+src_managed
+.DS_Store
+.ensime
+.idea/
+.idea_modules/
+*.iml
+src/main/resources/com/fasoo/javafinch/git.properties
+dependency-reduced-pom.xml
+temp
+*.log
+
 
 # Created by https://www.gitignore.io/api/node,reactnative
 

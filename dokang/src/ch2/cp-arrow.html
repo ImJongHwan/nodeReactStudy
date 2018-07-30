@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const titleStyle = {backgroundColor: 'red', color: 'white'}
+    const Title = props => (
+      <div style={titleStyle}>
+        <h3>{props.title}</h3>
+      </div>
+    )
+    const contentsStyle = { border: '1px solid blue', margin: 15 }
+    const Contents = props => (
+      <div style={contentsStyle}>
+        <div>줄거리: {props.contents}</div>
+      </div>
+    )
+    const Book = (props) => (
+      <div>
+        <Title title={props.title} />
+        <Contents contents={props.contents} />
+      </div>
+    )
+
+    const dom = (
+      <div>
+        <Book title="삼국지" contents="옛날 중국 이야기" />
+        <Book title="민수기" contents="옛날 이스라엘 이야기" />
+        <Book title="서유기" contents="원숭이가 활약하는 이야기" />
+      </div>
+    )
+
+    ReactDOM.render(dom, document.getElementById('root'))
+  </script>
+</body>
+</html>
