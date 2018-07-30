@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jsx-embed2</title>
+  <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    class RList extends React.Component {
+      render () {
+        const items = this.props.items.split(",")
+        const itemsObj = items.map(
+          (e) => {
+            return <li>{e}</li>
+          }
+        )
+        let title = this.props.title
+        if (!title) title = "LIST"
+
+        return (
+          <div>
+            <h3>{title}</h3>
+            <ul>{itemsObj}</ul>
+          </div>
+        )
+      }
+    }
+
+    ReactDOM.render(
+      <RList
+        title="Colors"
+        items="Red, Green, Blue, White"
+      />,
+      document.getElementById('root')
+    )
+  </script>
+</body>
+</html>
