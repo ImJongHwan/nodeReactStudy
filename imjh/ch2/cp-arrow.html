@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jsx-embed2</title>
+  <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const TitleParts = (props) => (
+      <div style={{backgroundColor: 'red', color: 'white'}}>
+        <h3>{props.title}</h3>
+      </div>
+    )
+    const ContentParts = (props) => (
+      <div style={{border: '1px solid blue', margin: 15}}>
+        <div>줄거리: {props.body}</div>
+      </div>
+    )
+    const Book = (props) => (
+      <div>
+        <TitleParts title={props.title} />
+        <ContentParts body={props.body} />
+      </div>
+    )
+    ReactDOM.render(
+      (
+        <div>
+          <Book title='삼국지' body='옛날 중국 이야기' />
+          <Book title='민수기' body='옛날 이스라엘 이야기' />
+          <Book title='서유기' body='원숭이가 활약하는 이야기' />
+        </div>
+      ),
+      document.getElementById('root')
+    )
+  </script>
+</body>
+</html>

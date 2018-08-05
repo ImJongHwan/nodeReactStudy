@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jsx-embed2</title>
+  <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    class PhotoText extends React.Component {
+      getImageURL () {
+        const id = this.props.image
+        const url = "img/" + id + ".png"
+        return url
+      }
+      render () {
+        const label = this.props.label
+        const url = this.getImageURL()
+        const boxStyle = {
+          border: "1px solid silver",
+          margin: "8px",
+          padding: "4px"
+        }
+        return (
+          <div style={boxStyle}>
+            <img src={url} width="128" />
+            <span>{label}</span>
+          </div>
+        )
+      }
+    }
+    const dom = <div>
+      <PhotoText image="pic1" label="태양이 눈부신 해변" />
+      <PhotoText image="pic2" label="바다에서 수영하기" />
+      <PhotoText image="pic3" label="하늘을 바라보며 휴식" />
+    </div>
+    ReactDOM.render(dom, document.getElementById('root'))
+  </script>
+</body>
+</html>
