@@ -4,13 +4,6 @@ import org.scalajs.dom.document
 
 
 object Cycle {
-  def main(args: Array[String]): Unit = {
-    val mountNode = document.getElementById("root")
-    App.Component().renderIntoDOM(mountNode)
-  }
-}
-
-object App {
 
   case class State(r: Double)
 
@@ -28,7 +21,7 @@ object App {
     }
   }
 
-  val Component = ScalaComponent.builder[Unit]("App")
+  val Component = ScalaComponent.builder[Unit]("Stopwatch")
     .initialState(State(Math.random()))
     .renderBackend[Backend]
     .componentWillMount { _ => CallbackTo(println("componentWillMount"))}
