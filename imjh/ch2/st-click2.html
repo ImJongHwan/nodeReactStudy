@@ -17,10 +17,15 @@
       }
       clickHandler (e) {
         const name = this.props.name
-        window.alert(name + '님 안녕하세요.')
+        const text = `${name}님 안녕하세요.`
+        // window.alert(name + '님 안녕하세요.')
+        window.alert(text)
       }
+      // render () {
+      //   return <div onClick={this.clickHandler}>Click Me</div>
+      // }
       render () {
-        return <div onClick={this.clickHandler}>Click Me</div>
+        return <div onClick={(e) => this.clickHandler(e)}>Click Me</div>
       }
     }
     ReactDOM.render(<Hello name="윤인성" />, document.getElementById('root'))
