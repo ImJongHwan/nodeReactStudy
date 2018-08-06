@@ -8,7 +8,8 @@ export class SimpleForm extends React.Component {
   }
   doChange(e) {
     const newValue = e.target.value
-    this.setState({value: newValue})
+    const filtered = newValue.replace(/[^0-9]/g, '')
+    this.setState({value: filtered})
   }
   doSubmit(e) {
     window.alert('전송: ' + this.state.value)
