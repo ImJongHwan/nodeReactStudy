@@ -9,11 +9,11 @@ object InchToCm {
   final case class State(inch: Double, cm: Double)
 
   final class Backend($: BackendScope[Unit, State]) {
-    def inchChanged(n: Double): Unit = {
-      $.modState(_.copy(inch = n, cm = n * 2.54)).runNow()
+    def inchChanged(n: Double): Callback = {
+      $.modState(_.copy(inch = n, cm = n * 2.54))
     }
-    def cmChanged(n: Double): Unit= {
-      $.modState(_.copy(inch = n / 2.54, cm = n)).runNow()
+    def cmChanged(n: Double): Callback = {
+      $.modState(_.copy(inch = n / 2.54, cm = n))
     }
     def render(s: State): VdomElement = {
       <.div(
@@ -30,7 +30,7 @@ object InchToCm {
 }
 
 object ValueInput {
-  final case class Props(title: String, onChange: Double => Unit, value: Double)
+  final case class Props(title: String, onChange: Double => Callback, value: Double)
   final case class State(value: Double)
 
   final class Backend($: BackendScope[Props, State]) {
@@ -38,7 +38,7 @@ object ValueInput {
       val v = e.target.value
       val filtered = v.replaceAll("[^0-9.]+", "").toDouble
       $.modState(s => s.copy(value = filtered))
-      $.props.map(_.onChange(filtered))
+      $.props.flatMap(_.onChange(filtered))
     }
     def componentWillReceiveProps(nextProps: Props): Callback = {
       $.modState(_.copy(value = nextProps.value))
