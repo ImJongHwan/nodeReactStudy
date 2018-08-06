@@ -7,7 +7,7 @@ object Index {
   def main(args: Array[String]): Unit = {
     val mountNode = document.getElementById("root")
 //    Cycle.Component().renderIntoDOM(mountNode)
-    Stopwatch.Component().renderIntoDOM(mountNode)
+    InchToCm.Component().renderIntoDOM(mountNode)
   }
 }
 
