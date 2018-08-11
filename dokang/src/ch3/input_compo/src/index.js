@@ -28,6 +28,8 @@ class CustomForm extends React.Component {
   render() {
     const emailPat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
     const asciiFilter = /[^\u0020-\u007e]+/g
+    const telPat = /^[0-9-()+]+$/
+    const telFilter = /[^0-9-()+]/g
     return (
       <form onSubmit={e => this.handleSubmit(e)}>
         <FormInput name={'email'} label={'메일 주소'}
@@ -35,7 +37,7 @@ class CustomForm extends React.Component {
                    onChange={e => this.handleChange(e)}
         />
         <FormInput name={'tel'} label={'전화 번호'}
-                   value={this.state.tel} filter={/[^0-9-()+]/g} pattern={/^[0-9-()+]+$/}
+                   value={this.state.tel} filter={telFilter} pattern={telPat}
                    onChange={e => this.handleChange(e)}
         />
         <input type={'submit'} value={'전송'} disabled={!this.state.allok}/>

@@ -12,6 +12,12 @@ class FormInput extends Component {
       isOK: this.checkValue(v)
     }
   }
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      value: nextProps.value,
+      isOK: this.checkValue(nextProps.value)
+    })
+  }
   checkValue(s) {
     if (this.props.pattern === null) {
       return true
@@ -26,6 +32,13 @@ class FormInput extends Component {
       value: newValue,
       isOK: newIsOK
     })
+    if (this.props.onChange) {
+      this.props.onChange({
+        name: this.props.name,
+        value: newValue,
+        isOK: newIsOK
+      })
+    }
   }
   render() {
     const msg = this.renderStatusMessage()
