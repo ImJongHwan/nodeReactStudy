@@ -9,7 +9,8 @@ object Index {
     val mountNode = document.getElementById("root")
 //    Cycle.Component().renderIntoDOM(mountNode)
 //    InchToCm.Component().renderIntoDOM(mountNode)
-    CustomForm.Component().renderIntoDOM(mountNode)
+//    CustomForm.Component().renderIntoDOM(mountNode)
+    SAgent.Component().renderIntoDOM(mountNode)
   }
 }
 
