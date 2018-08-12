@@ -32,9 +32,7 @@ object Item {
     xhrTry match {
       case Failure(e) => println("JSON을 읽어들이는동안 오류가 발생했습니다.")
       case Success(xhr) =>
-        println(xhr.responseText)
         val data = upickle.default.read[List[Item]](xhr.responseText)
-        println(data)
         this.setState(_.copy(items = data))
     }
   }
