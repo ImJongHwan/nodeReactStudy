@@ -9,6 +9,7 @@ import slinky.web.html._
 
 import scala.scalajs.js
 import scala.scalajs.js.RegExp
+import scala.scalajs.js.JSConverters._
 
 case class Changed(target: FromInput, value: String, isOK: Boolean, name: String)
 
@@ -50,13 +51,16 @@ case class Changed(target: FromInput, value: String, isOK: Boolean, name: String
   }
 
   def renderStatusMessage(): ReactElement = {
+    val styleMap = Map("margin" -> "8px", "padding" -> "8px", "color" -> "white")
     val msg = {
       if (this.state.isOK) {
-        val newSo = js.Dynamic.literal(margin = "8px", padding = "8px", color = "white", backgroundColor = "green")
-        span(style:=newSo)("OK")
+        val newStyleMap = styleMap + ("backgroundColor" -> "green")
+        val newSo = newStyleMap.toJSDictionary.asInstanceOf[js.Dynamic]
+        span(style:= newSo)("OK")
       }
       else {
-        val newSo = js.Dynamic.literal(margin = "8px", padding = "8px", color = "white", backgroundColor = "red")
+        val newStyleMap = styleMap + ("backgroundColor" -> "red")
+        val newSo = newStyleMap.toJSDictionary.asInstanceOf[js.Dynamic]
         span(style:=newSo)("NG")
       }
     }
