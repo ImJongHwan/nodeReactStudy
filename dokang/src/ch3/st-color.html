@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>st-color</title>
+  <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <div id="info"></div>
+  <script type="text/babel">
+    class ColorBox extends React.Component {
+      constructor(props){
+        super(props)
+        this.state = {
+          index: 0,
+          colors: ['red', 'blue', 'green', 'yellow', 'black']
+        }
+      }
+
+      render() {
+        const colors = this.state.colors
+        const index = this.state.index
+        const cur = (index >= 0) ? colors[index] : ''
+        const items = colors.map(c => {
+          const bs = (c === cur) ? '1px solid black' : '1px solid white'
+          const cstyle = {
+            color: c, border: bs
+          }
+          const clickHandler = e => {
+            const c = e.target.style.color
+            const i = this.state.colors.indexOf(c)
+            this.setState({index: i})
+            if (this.props.onColorChange) {
+              this.props.onColorChange({color:c})
+            }
+          }
+          return (
+            <span onClick={clickHandler} style={cstyle}>■</span>
+          )
+        })
+        return (
+          <div>{items}</div>
+        )
+      }
+    }
+    const colorHandler = e => {
+      ReactDOM.render(
+        <span>{e.color}</span>,
+        document.getElementById('info')
+      )
+    }
+    const dom = <div>
+      <ColorBox id={'cb'} onColorChange={colorHandler} />
+    </div>
+    ReactDOM.render(dom, document.getElementById('root'))
+  </script>
+</body>
+</html>
