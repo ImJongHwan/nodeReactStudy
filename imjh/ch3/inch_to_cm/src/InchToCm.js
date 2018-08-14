@@ -20,7 +20,7 @@ export default class InchToCm extends React.Component {
 
   cmChanged (e) {
     const cmValue = e.value
-    const inchValue = cmValue * 2.54
+    const inchValue = cmValue / 2.54
     this.setState({
       inch: inchValue,
       cm: cmValue
