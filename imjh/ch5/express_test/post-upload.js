@@ -4,11 +4,20 @@ const app = express()
 const multer = require('multer')
 const path = require('path')
 
+const fs = require('fs')
+
 // var dir = './tmp';
 
 // if (!fs.existsSync(dir)){
 //     fs.mkdirSync(dir);
 // }
+
+if (!fs.existsSync('./tmp')) {
+  fs.mkdirSync('./tmp')
+}
+if (!fs.existsSync('./pub')) {
+  fs.mkdirSync('./pub')
+}
 
 const tmpDir = path.join(__dirname, 'tmp')
 const pubDir = path.join(__dirname, 'pub')
@@ -45,7 +54,6 @@ app.post('/', uploader.single('aFile'), (req, res) => {
 
   const fname = req.file.filename + '.png'
   const des = pubDir + '/' + fname
-  const fs = require('fs')
   console.log(req.file.path)
   console.log(des)
   fs.rename(req.file.path, des, err => {
