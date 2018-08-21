@@ -1,5 +1,7 @@
 {
     "presets": [
-        "env", "react"
-    ]
+      ["env", { "targets": { "node": "current" } } ],
+      "react"
+    ],
+    "plugins": ["transform-object-rest-spread"]
 }
