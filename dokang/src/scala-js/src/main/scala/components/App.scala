@@ -8,12 +8,12 @@ import store.AppCircuit
 
 object App {
 
-  final class Backend($: BackendScope[ModelProxy[AppModel], Unit]) {
-    def render(proxy: ModelProxy[AppModel]): VdomElement = {
+  final class Backend($: BackendScope[Unit, Unit]) {
+    def render(): VdomElement = {
       <.div(^.className := "row mt-5")(
         <.div(^.className := "col-md-4 offset-md-1")(
           <.h2("Articles"),
-          TitleList(proxy)
+          TitleList()
         ),
         <.div(^.className := "col-md-4 offset-md-1")(
           <.h2("Add a new article"),
@@ -23,11 +23,11 @@ object App {
     }
   }
 
-  val Component = ScalaComponent.builder[ModelProxy[AppModel]]("App")
+  val Component = ScalaComponent.builder[Unit]("App")
     .renderBackend[Backend]
     .build
   def apply() = {
-    AppCircuit.wrap(m => m)(Component(_))
+    Component()
   }
 }
 
