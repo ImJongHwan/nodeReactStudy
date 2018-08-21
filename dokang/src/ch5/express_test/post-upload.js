@@ -43,4 +43,3 @@ app.post('/', uploader.single('aFile'), (req, res) => {
       `<img src="/pub/${fname}"/>`)
   })
 })
-
