@@ -20,7 +20,7 @@ class App extends Component {
   async getPost(postId) {
     const { PostActions } = this.props
     try {
-      await PostActions.getPost(postId)
+      await PostActions.getPost2(postId)
       console.log('요청이 완료된 다음에 실행됨.')
     }
     catch(e) {
